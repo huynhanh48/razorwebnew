@@ -1,0 +1,83 @@
+@page
+@model MigrationsExample.Pages_MyModelPages.IndexModel
+
+@{
+    Layout = null;
+    int a=0;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MigrationsExample.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+@{
+
+     var htmlurl = Url.Page("/MyModelPages/Index");
+     //Url.Page("/MyModelPages/Index", new { p =p});
+    var temp =  new HA.TagHelpers.PadingModel(){
+        currentPages=Model.currentPage,
+        countPages=Model.countPages,
+        GeneraterUrl = (int? p)=> htmlurl + "?p="+p
+        
+    };
+ 
+}
+<partial name="_PadingHA" model="@temp"/>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form  method="get">
+    <label for="" style="border: 2px ;"> Tìm Kiếm </label>
+    <input name="Search" value="">
+    <button type="submit">Search</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article[0].PublishDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article[0].Content)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Article) {
+        <tr>
+            <td>@(++a)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

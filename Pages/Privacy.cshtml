@@ -1,0 +1,18 @@
+﻿@page
+@using MigrationsExample.Models;
+@model PrivacyModel
+@{
+    ViewData["Title"] = "SQL SERVER";
+    var post = ViewData["post"] as List<Article>;
+}
+<h1>@ViewData["Title"]</h1>
+
+<ol>
+    @foreach(var x in post)
+    {
+        <li>@x.Title</li>
+    }
+    <li>
+
+    </li>
+</ol>

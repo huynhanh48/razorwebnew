@@ -1,0 +1,35 @@
+﻿@page
+@model MigrationsExample.Pages_MyModelPages.CreatedArticleModel;
+@{
+    ViewData["Title"] = " TrangHA";
+}
+<H1> Huynh Anh</H1>
+ <form  method="get">
+    <div>
+        <label class="alert alert-danger"> Tim Kiem</label>
+        <input name="Search" value="">
+        <button type="submit"> submit</button>
+
+    </div>
+
+ </form>
+ <form  method="post">
+    <ul>
+        <label asp-for="article.Title"></label>
+        <input asp-for="article.Title">
+        
+    </ul>
+ </form>
+ <div>
+    @foreach(var item in Model.GetArticles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(items => item.Title)
+            </td>
+             <td>
+                @Html.DisplayFor(items => item.PublishDate)
+            </td>
+        </tr>
+    }
+ </div>

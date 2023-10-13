@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@using MigrationsExample.Models;
+@{
+    ViewData["Title"] = "Home page";
+    var post = ViewData["post"]  as List<Article>;
+}
+<header>
+    <style>
+        #a1{
+            font-style: oblique;
+            border:2px ;
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
+
+    </style>
+</header>
+
+<div class="text-center">
+    <a id="a1" class="nav-link text-dark btn btn-secondary" asp-area="" asp-page="MyModelPages/Create">Tạo Bài Viết</a>
+</div>
+<ol>
+
+</ol>
