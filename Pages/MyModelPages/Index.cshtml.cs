@@ -34,13 +34,10 @@ namespace MigrationsExample.Pages_MyModelPages
              if(currentPage>countPages)
              currentPage=countPages;
 
-
-
-       
             var linq = await (from a in _context.article
             orderby a.PublishDate descending
-            select a).Skip((currentPage -1)*10).Take(itemPage).ToListAsync();
-            
+            select a).ToListAsync();
+            //.Skip((currentPage -1)*10).Take(itemPage)
             if(Search!=null)
             {
                 var linq2 = await (from a in _context.article
