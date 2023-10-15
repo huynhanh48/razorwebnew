@@ -39,7 +39,7 @@ namespace MigrationsExample.Pages_MyModelPages
        
             var linq = await (from a in _context.article
             orderby a.PublishDate descending
-            select a).Skip((currentPage -1)*10).Take(itemPage).ToListAsync();
+            select a).ToListAsync();
             
             if(Search!=null)
             {
